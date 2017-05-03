@@ -1,0 +1,37 @@
+server {
+    listen 80;
+    server_name localhost;
+    
+    root /var/www/wallet/public/;
+    index index.php index.html;
+    
+    # Important for VirtualBox
+    sendfile off; 
+    
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    #location /phpmyadmin {
+    #    root /usr/share/;
+    #    index index.php index.html index.htm;
+    #    location ~ ^/phpmyadmin/(.+\.php)$ {
+    #        include fastcgi_params;
+    #        fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
+    #        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    #        fastcgi_cache off;
+    #        fastcgi_index index.php;
+    #    }
+    #    location ~* ^/phpmyadmin/(.+\.(jpg|jpeg|gif|css|png|js|ico|html|xml|txt))$ {
+    #        root /usr/share/;
+    #    }
+    #}
+
+    location ~* \.php {
+        include fastcgi_params;
+        fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_cache off;
+        fastcgi_index index.php;
+    }
+}
