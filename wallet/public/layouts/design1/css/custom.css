@@ -1,0 +1,14 @@
+.menubar > div {
+    color: #000000;
+    font-size: 1vw;
+    cursor: pointer
+}
+#addresses {
+    color: #000000;
+}
+#transactions {
+    color: #000000;
+}
+.menubar > .active {
+    background-color: darkcyan;
+}
