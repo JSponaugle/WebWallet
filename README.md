@@ -7,8 +7,9 @@ JSponaugle (DevYoshi):
 `BTC Donate: 18dHkxJ4rAh1atY9HdXMJTv7RajcG7imc5`
   
 TLe (tvle83):  
-`ION Donate: `  
-`BTC Donate: `  
+`ION Donate: iZBc5jke3WECJCW3opfQE6Mk3VkYayz5pq`  
+`BTC Donate: 1MT6GYLARbWjjoNppcZ6S63DFsbFeVmYBq`  
+
 # Configure
  Edit your .env file
  ```
