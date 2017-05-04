@@ -1,0 +1,44 @@
+body {
+    color: #FFFFFF;
+    background-color: #041019;
+    font-family: 'Roboto', sans-serif;
+}
+
+footer {
+    color: #FFFFFF;
+    background-color: #041019;
+    font-family: 'Roboto', sans-serif;
+    position: fixed;
+    height: 20px;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Colors */
+.orange {
+    color: #FF8B41;
+}
+
+.blue {
+    color: #1D82AD
+}
+
+.green {
+    color: #78FEAB;
+}
+
+.darkGreen {
+    color: #008080
+}
+
+.purple {
+    color: #6E20F3;
+}
+
+.babyBlue {
+    color: #4EBDE4;
+}
+
+.white {
+
+}
