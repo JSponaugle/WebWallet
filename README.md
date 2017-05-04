@@ -9,7 +9,6 @@ JSponaugle (DevYoshi):
 TLe (tvle83):  
 `ION Donate: `  
 `BTC Donate: `  
-
 # Configure
  Edit your .env file
  ```
