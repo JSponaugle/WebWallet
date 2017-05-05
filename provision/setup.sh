@@ -75,6 +75,7 @@ rm -fr /var/www/html
 
 (crontab -l ; echo "#### Frontend CronJob Pack")| crontab -
 (crontab -l ; echo "* * * * * ntpdate ntp.ubuntu.com")| crontab -
+(crontab -l ; echo "* * * * * php /var/www/wallet/ schedule:run >> /dev/null 2>&1")| crontab -
 
 echo "Creating .evn"
 php -r "file_exists('.env') || copy('.env.example', '.env');"
