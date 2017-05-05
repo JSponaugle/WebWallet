@@ -11,13 +11,16 @@ TLe (tvle83):
 `BTC Donate: 1MT6GYLARbWjjoNppcZ6S63DFsbFeVmYBq`  
 
 # Configure
- Edit your .env file
+ Edit your `wallet\.env` file
  ```
- WALLET0_TYPE=ION
- WALLET0_DESIGN=1
- WALLET0_RPC_IP=0.0.0.0
- WALLET0_RPC_PORT=58273
- WALLET0_RPC_USER=rpcuser
- WALLET0_RPC_PASSWORD=rpcpass
+WALLETS=1
+
+WALLET0_TYPE=ION
+WALLET0_DESIGN=1
+WALLET0_MASTERNODES=false
+WALLET0_RPC_IP=0.0.0.0
+WALLET0_RPC_PORT=58273
+WALLET0_RPC_USER=rpcuser
+WALLET0_RPC_PASSWORD=rpcpass
  ```
  This will allow you to connect to a Wallet of your choice.

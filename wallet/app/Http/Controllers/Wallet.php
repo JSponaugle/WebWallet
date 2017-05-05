@@ -29,7 +29,10 @@ class Wallet extends Controller
 
 	function receive()
 	{
-		$data = $this->main();
+		$data['listaddressgroupings'] = [];
+		if (isset($this->wallet)) {
+			$data['listaddressgroupings'] = $this->listaddressgroupings();
+		}
 		return view('layout.design1.receive', $data);
 	}
 
@@ -50,16 +53,19 @@ class Wallet extends Controller
 
 	function addresses()
 	{
-		$data['listaddressgroupings'] = [];
+		$data['sendingAddresses'] = [];
 		if (isset($this->wallet)) {
-			$data['listaddressgroupings'] = $this->listaddressgroupings();
+//			$data['sendingAddresses'] = $this->listaddressgroupings();
 		}
 		return view('layout.design1.addresses', $data);
 	}
 
 	function masternodes()
 	{
-		$data = $this->main();
+		$data['masterNodeList'] = [];
+		if (isset($this->wallet)) {
+			$data['masterNodeList'] = $this->masternodelist();
+		}
 		return view('layout.design1.masternodes', $data);
 	}
 
@@ -88,6 +94,31 @@ class Wallet extends Controller
 		return $ret;
 	}
 
+	function masternodelist()
+	{
+		$ret = [];
+		$i   = 0;
+		try {
+			$mnl = $this->wallet->masternodelist('full');
+			foreach ($mnl as $each => $value) {
+				$all             = explode(' ', preg_replace('/\s+/', ' ', trim($value)));
+				$mn['pubkey']    = $all[2];
+				$mn['address']   = $all[3];
+				$mn['lastseen']  = date('Y-m-d H:i:s e',$all[4]);
+				$mn['active']    = $all[0];
+				$mn['activesec'] = $this->sectohms($all[5]);
+				$ret[$i]         = $mn;
+				$i++;
+			}
+		}
+		catch (Exception $e) {
+
+		}
+		krsort($ret);
+		$ret = array_values($ret);
+		return $ret;
+	}
+
 	function getstakinginfo()
 	{
 		$ret = [];
@@ -104,7 +135,7 @@ class Wallet extends Controller
 	{
 		$ret = [];
 		try {
-			$ret = $this->wallet->listtransactions("",$total);
+			$ret = $this->wallet->listtransactions("", $total);
 			krsort($ret);
 		}
 		catch (Exception $e) {
@@ -123,5 +154,23 @@ class Wallet extends Controller
 
 		}
 		return $ret;
+	}
+
+	public function sectohms($ss)
+	{
+		$s = $ss % 60;
+		$m = floor(($ss % 3600) / 60);
+		$h = floor(($ss % 86400) / 3600);
+		$d = floor(($ss % 2592000) / 86400);
+		$M = floor($ss / 2592000);
+
+		$ms = sprintf("%02d", $m)."m:".sprintf("%02d", $s)."s";
+		if ($h > 0) {
+			$ms = sprintf("%02d", $h)."h:".$ms;
+		}
+		if ($d > 0) {
+			$ms = $d."d ".$ms;
+		}
+		return $ms;
 	}
 }

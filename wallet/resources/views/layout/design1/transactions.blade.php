@@ -7,7 +7,7 @@
                 <th>Date</th>
                 <th>Type</th>
                 <th>Address</th>
-                <th>Amount</th>
+                <th>Amount {!! env('WALLET0_TYPE') !!}</th>
             </tr>
             </thead>
             @foreach ($listtransactions as $each)
@@ -16,7 +16,7 @@
                     <th>{!! date('m/d/Y H:i',$each['time']) !!}</th>
                     <th>@if ($each['category'] == "receive") Received with @elseif($each['category'] == "send") Sent to @endif</th>
                     <th>({!! $each['address'] !!})</th>
-                    <th style="color: @if ($each['category'] == "receive") green @elseif($each['category'] == "send") red @endif">@if ($each['category'] == "receive") + @elseif($each['category'] == "send") - @endif{!! abs($each['amount']) !!}</th>
+                    <th style="color: @if ($each['category'] == "receive") #0f7c01 @elseif($each['category'] == "send") #a00303 @endif">@if ($each['category'] == "receive") + @elseif($each['category'] == "send") - @endif{!! abs($each['amount']) !!}</th>
                 </tr>
             @endforeach
         </table>

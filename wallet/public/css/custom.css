@@ -9,11 +9,15 @@ footer {
     background-color: #041019;
     font-family: 'Roboto', sans-serif;
     position: fixed;
-    height: 20px;
+    height: 25px;
     bottom: 0;
     width: 100%;
 }
-
+footer > div > .row > .app {
+    border: 1px solid grey;
+    background-color: gainsboro;
+    color: black;
+}
 /* Colors */
 .orange {
     color: #FF8B41;
