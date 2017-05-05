@@ -7,7 +7,7 @@
                 <th>Date</th>
                 <th>Type</th>
                 <th>Address</th>
-                <th>Amount</th>
+                <th>Amount {!! env('WALLET0_TYPE') !!}</th>
             </tr>
             </thead>
             @foreach ($listtransactions as $each)
