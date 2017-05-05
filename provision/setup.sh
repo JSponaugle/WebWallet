@@ -18,7 +18,7 @@ echo "Installing PHP"
 apt-get install php-common php-dev php-cli php-fpm -y > /dev/null
 
 echo "Installing PHP extensions"
-apt-get install curl php-curl php-gd php-mcrypt php-mysql php-mbstring php-zip php-sqlite php- -y > /dev/null
+apt-get install curl php-curl php-gd php-mcrypt php-mbstring php-zip php7.0-sqlite php- -y > /dev/null
 
 #DBHOST=localhost
 #DBNAME=sql
@@ -81,7 +81,7 @@ echo "Creating .evn"
 php -r "file_exists('.env') || copy('.env.example', '.env');"
 php artisan key:generate
 
-echo "Processing Mysql DB Data"
+echo "Processing DB Data"
 php artisan migrate
 php artisan db:seed
 
