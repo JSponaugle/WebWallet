@@ -1,5 +1,5 @@
 <div class="row contentrow" id="dashboard" style="background-color: darkgrey">
-    <div class="col-xs-5">
+    <div class="col-xs-3">
         <div class="row">
             <div class="col-xs-12" style="color: #000000; font-weight: 800;">Balances</div>
         </div>
@@ -21,7 +21,7 @@
             <div class="col-xs-9" style="color: #000000; font-weight: 800;">{!! $total = $getinfo['balance'] + $getinfo['stake'] + $getinfo['newmint'] !!} ION</div>
         </div>
     </div>
-    <div class="col-xs-7">
+    <div class="col-xs-9">
         <div class="row">
             <div class="col-xs-12" style="color: #000000"> Recent Transactions</div>
         </div>
@@ -36,7 +36,7 @@
                         ({!! $oneTrans['address'] !!})
                     </div>
                 </div>
-                <div class="col-xs-3" style="color: @if ($oneTrans['category'] == "receive") #000000 @elseif($oneTrans['category'] == "send") red @endif">@if ($oneTrans['category'] == "receive") + @elseif($oneTrans['category'] == "send") - @endif{!! abs($oneTrans['amount']) !!} ION</div>
+                <div class="col-xs-3" style="color: @if ($oneTrans['category'] == "receive") #0f7c01 @elseif($oneTrans['category'] == "send") #a00303 @endif">@if ($oneTrans['category'] == "receive") + @elseif($oneTrans['category'] == "send") - @endif{!! abs($oneTrans['amount']) !!} ION</div>
             </div>
         @endforeach
     </div>
