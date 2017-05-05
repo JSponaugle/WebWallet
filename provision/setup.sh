@@ -60,6 +60,8 @@ sudo mv composer.phar /usr/bin/composer
 
 cd /var/www/wallet/
 
+touch /var/www/wallet/database/database.sqlite
+
 echo "Running Composer Update"
 if [[ -s /var/www/composer.json ]] ;then
   composer update >> /vagrant/vm_build.log 2>&1
