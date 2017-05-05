@@ -12,3 +12,6 @@
 .menubar > .active {
     background-color: darkcyan;
 }
+#receiveList {
+    background-color: white;
+}
