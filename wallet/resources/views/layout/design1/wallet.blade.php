@@ -4,10 +4,10 @@
     <div class="col-xs-2"></div>
     <div class="col-xs-8" style="border: 1px solid #ffffff;">
         <div class="row" style="background-color: lightgray">
-            <div class="col-xs-2" style="color: #000000"><img src="/layouts/design1/img/ion-128.png" style="height: 20px; width: 20px;"> Ion - Wallet</div>
+            <div class="col-xs-2" style="color: #000000"><img src="/layouts/design1/img/{!! strtolower(env('WALLET0_TYPE')) !!}-128.png" style="height: 20px; width: 20px;"> {!! env('WALLET0_TYPE') !!} - Wallet</div>
             <div class="col-xs-8"></div>
             <div class="col-xs-2 pull-right">
-                <button class="btn-default pull-right" style="height: 20px; width: 20px;"> -</button>
+                <button class="btn-default pull-right" style="height: 20px; width: 20px;">-</button>
             </div>
         </div>
         <div class="row" style="background-color: lightgray">
