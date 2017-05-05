@@ -18,7 +18,7 @@ echo "Installing PHP"
 apt-get install php-common php-dev php-cli php-fpm -y > /dev/null
 
 echo "Installing PHP extensions"
-apt-get install curl php-curl php-gd php-mcrypt php-mysql php-mbstring php-zip php-sqlite php- -y > /dev/null
+apt-get install curl php-curl php-gd php-mcrypt php-mbstring php-zip php7.0-sqlite php- -y > /dev/null
 
 #DBHOST=localhost
 #DBNAME=sql
@@ -60,6 +60,8 @@ sudo mv composer.phar /usr/bin/composer
 
 cd /var/www/wallet/
 
+touch /var/www/wallet/database/database.sqlite
+
 echo "Running Composer Update"
 if [[ -s /var/www/composer.json ]] ;then
   composer update >> /vagrant/vm_build.log 2>&1
@@ -75,12 +77,13 @@ rm -fr /var/www/html
 
 (crontab -l ; echo "#### Frontend CronJob Pack")| crontab -
 (crontab -l ; echo "* * * * * ntpdate ntp.ubuntu.com")| crontab -
+(crontab -l ; echo "* * * * * php /var/www/wallet/ schedule:run >> /dev/null 2>&1")| crontab -
 
 echo "Creating .evn"
 php -r "file_exists('.env') || copy('.env.example', '.env');"
 php artisan key:generate
 
-echo "Processing Mysql DB Data"
+echo "Processing DB Data"
 php artisan migrate
 php artisan db:seed
 
